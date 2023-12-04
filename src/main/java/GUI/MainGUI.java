@@ -13,7 +13,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Main extends JFrame{
+public class MainGUI extends JFrame{
     private JPanel Background;
     private JButton PDFexport;
     private JTable MealsTable;
@@ -48,7 +48,7 @@ public class Main extends JFrame{
     private ArrayList<Product> products;
     private ArrayList<Meal> meals;
 
-    public Main(ArrayList<Product> products, ArrayList<Meal> meals) {
+    public MainGUI(ArrayList<Product> products, ArrayList<Meal> meals) {
         setContentPane(Background);
         setTitle("Food Table");
         setSize(1000, 500);
@@ -70,7 +70,7 @@ public class Main extends JFrame{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 if (NameField.getText().isEmpty() || CarbsField.getText().isEmpty() || FatsField.getText().isEmpty() || ProteinsField.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(Main.this, "Missing data");
+                    JOptionPane.showMessageDialog(MainGUI.this, "Missing data");
                 } else {
                     try {
                         // Pobierz tekstową reprezentację wybranego elementu z TypeField
@@ -84,16 +84,16 @@ public class Main extends JFrame{
                         model.addRow(data);
                         model.fireTableDataChanged();
 
-                        JOptionPane.showMessageDialog(Main.this, "Product added");
+                        JOptionPane.showMessageDialog(MainGUI.this, "Product added");
                         NameField.setText("");
                         CarbsField.setText("");
                         FatsField.setText("");
                         ProteinsField.setText("");
                         makeTable();
                     } catch (NumberFormatException exception) {
-                        JOptionPane.showMessageDialog(Main.this, "Invalid data");
+                        JOptionPane.showMessageDialog(MainGUI.this, "Invalid data");
                     } catch (IllegalArgumentException exception) {
-                        JOptionPane.showMessageDialog(Main.this, "Invalid product type");
+                        JOptionPane.showMessageDialog(MainGUI.this, "Invalid product type");
                     }
                 }
             }
@@ -108,9 +108,9 @@ public class Main extends JFrame{
                     makeTable();
 
                 }   else if (ProductsTable.getSelectedRowCount() == 0) {
-                    JOptionPane.showMessageDialog(Main.this, "No row selected");
+                    JOptionPane.showMessageDialog(MainGUI.this, "No row selected");
                 }   else {
-                    JOptionPane.showMessageDialog(Main.this, "Please select a single row");
+                    JOptionPane.showMessageDialog(MainGUI.this, "Please select a single row");
                 }
             }
         });
@@ -139,16 +139,16 @@ public class Main extends JFrame{
                         model.setValueAt(Proteins, ProductsTable.getSelectedRow(), 3);
                         model.setValueAt(Category, ProductsTable.getSelectedRow(), 4);
 
-                        JOptionPane.showMessageDialog(Main.this, "Update successful");
+                        JOptionPane.showMessageDialog(MainGUI.this, "Update successful");
 
                     } catch (NumberFormatException exception)   {
-                        JOptionPane.showMessageDialog(Main.this, "Invalid data");
+                        JOptionPane.showMessageDialog(MainGUI.this, "Invalid data");
                     }
 
                 } else if (ProductsTable.getRowCount() == 0) {
-                    JOptionPane.showMessageDialog(Main.this, "No data to edit");
+                    JOptionPane.showMessageDialog(MainGUI.this, "No data to edit");
                 } else {
-                    JOptionPane.showMessageDialog(Main.this, "Please select a single row");
+                    JOptionPane.showMessageDialog(MainGUI.this, "Please select a single row");
                 }
 
             }
@@ -174,6 +174,42 @@ public class Main extends JFrame{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 makeTableForMeal();
+            }
+        });
+        DeleteMeal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                meals.remove(TypeOfMeals.getSelectedIndex());
+                TypeOfMeals.removeItem(TypeOfMeals.getSelectedItem());
+            }
+        });
+        DeleteFromMeal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if(MealsTable.getSelectedRowCount() == 1)   {
+                    int selectedRow = MealsTable.getSelectedRow();
+
+                    if (selectedRow != -1) {
+                        String selectedMealType = Objects.requireNonNull(TypeOfMeals.getSelectedItem()).toString();
+
+                        meals.stream()
+                                .filter(Meal -> Meal.getCategory().equals(selectedMealType))
+                                .findFirst()
+                                .ifPresent(Meal -> {
+                                    Meal.getProducts().remove(selectedRow);
+                                });
+
+                        makeTableForMeal();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(MainGUI.this, "No row selected");
+                }
+            }
+        });
+        AddMeal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                new CreateMeal(meals, TypeOfMeals);
             }
         });
     }

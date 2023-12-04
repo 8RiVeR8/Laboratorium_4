@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ffd9996-49f8-4321-9b13-3b31b0726e67" name="Changes" comment="GUI poczatek">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Logic/ProductwWeight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Data.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ProductWithWeight.txt" afterDir="false" />
+    <list default="true" id="3ffd9996-49f8-4321-9b13-3b31b0726e67" name="Changes" comment="Dodanie kilku guzikow i tabeli meals">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Data/TxtFileWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data/TxtFileWorker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/Main.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/Main.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Logic/Meal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Logic/Meal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/CreateMeal.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/CreateMeal.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/CreateMeal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/CreateMeal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/Main.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/MainGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/MainGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Data2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Meals.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +76,7 @@
       <option name="presentableId" value="Default" />
       <updated>1701460349150</updated>
       <workItem from="1701460351375" duration="19316000" />
-      <workItem from="1701682746806" duration="7045000" />
+      <workItem from="1701682746806" duration="9405000" />
     </task>
     <task id="LOCAL-00001" summary="GUI poczatek">
       <created>1701684010559</created>
@@ -89,7 +85,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701684010559</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Dodanie kilku guzikow i tabeli meals">
+      <created>1701690817461</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1701690817461</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -108,6 +111,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="GUI poczatek" />
-    <option name="LAST_COMMIT_MESSAGE" value="GUI poczatek" />
+    <MESSAGE value="Dodanie kilku guzikow i tabeli meals" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dodanie kilku guzikow i tabeli meals" />
   </component>
 </project>

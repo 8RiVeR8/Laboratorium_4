@@ -1,7 +1,7 @@
 import Data.TxtFileWorker;
+import GUI.MainGUI;
 import Logic.Meal;
 import Logic.Product;
-import Logic.ProductwWeight;
 
 import java.util.ArrayList;
 
@@ -33,7 +33,7 @@ public class Main {
                     System.out.println("------------------------");
                 });*/
 
-        GUI.Main g = new GUI.Main(products, meals);
+        MainGUI g = new MainGUI(products, meals);
 
     }
 }
