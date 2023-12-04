@@ -1,13 +1,15 @@
 package GUI;
 
-import Data.TxtFileWorker;
 import Logic.Meal;
 import Logic.Product;
+import Logic.ProductwWeight;
 import Logic.TypeFood;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -31,7 +33,7 @@ public class Main extends JFrame{
     private JTextField CarbsField;
     private JTextField FatsField;
     private JTextField ProteinsField;
-    private JComboBox TypeOfProduct;
+    private JComboBox TypeOfMeals;
     private JLabel ListOfProducts;
     private JLabel ListOfMeals;
     private JTable ProductsTable;
@@ -47,7 +49,6 @@ public class Main extends JFrame{
     private ArrayList<Meal> meals;
 
     public Main(ArrayList<Product> products, ArrayList<Meal> meals) {
-        DefaultTableModel model = (DefaultTableModel)ProductsTable.getModel();
         setContentPane(Background);
         setTitle("Food Table");
         setSize(1000, 500);
@@ -57,7 +58,14 @@ public class Main extends JFrame{
         this.products = products;
         this.meals = meals;
 
-        makeTable(products);
+        makeTable();
+        DefaultTableModel model = (DefaultTableModel)ProductsTable.getModel();
+        setMeals();
+        makeTableForMeal();
+        KcalAmountField.setEditable(false);
+        CarbsAmountField.setEditable(false);
+        ProteinsAmountField.setEditable(false);
+        FatsAmountField.setEditable(false);
         AddProduct.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -81,6 +89,7 @@ public class Main extends JFrame{
                         CarbsField.setText("");
                         FatsField.setText("");
                         ProteinsField.setText("");
+                        makeTable();
                     } catch (NumberFormatException exception) {
                         JOptionPane.showMessageDialog(Main.this, "Invalid data");
                     } catch (IllegalArgumentException exception) {
@@ -89,13 +98,147 @@ public class Main extends JFrame{
                 }
             }
         });
+        DeleteProduct.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if(ProductsTable.getSelectedRowCount() == 1) {
+                    products.remove(ProductsTable.getSelectedRow());
+                    model.removeRow(ProductsTable.getSelectedRow());
+                    model.fireTableDataChanged();
+                    makeTable();
+
+                }   else if (ProductsTable.getSelectedRowCount() == 0) {
+                    JOptionPane.showMessageDialog(Main.this, "No row selected");
+                }   else {
+                    JOptionPane.showMessageDialog(Main.this, "Please select a single row");
+                }
+            }
+        });
+        EditProduct.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if(ProductsTable.getSelectedRowCount() == 1) {
+
+                    String Name = NameField.getText();
+                    String Carbs = CarbsField.getText();
+                    String Fats = FatsField.getText();
+                    String Proteins = ProteinsField.getText();
+                    String Category = Objects.requireNonNull(TypeField.getSelectedItem()).toString();
+
+                    try {
+                        Product product = (Product) products.get(ProductsTable.getSelectedRow());
+                        product.setName(Name);
+                        product.setCarbs(Double.parseDouble(Carbs));
+                        product.setFats(Double.parseDouble(Fats));
+                        product.setProteins(Double.parseDouble(Proteins));
+                        product.setType(TypeFood.valueOf(Category));
+
+                        model.setValueAt(Name, ProductsTable.getSelectedRow(), 0);
+                        model.setValueAt(Carbs, ProductsTable.getSelectedRow(), 1);
+                        model.setValueAt(Fats, ProductsTable.getSelectedRow(), 2);
+                        model.setValueAt(Proteins, ProductsTable.getSelectedRow(), 3);
+                        model.setValueAt(Category, ProductsTable.getSelectedRow(), 4);
+
+                        JOptionPane.showMessageDialog(Main.this, "Update successful");
+
+                    } catch (NumberFormatException exception)   {
+                        JOptionPane.showMessageDialog(Main.this, "Invalid data");
+                    }
+
+                } else if (ProductsTable.getRowCount() == 0) {
+                    JOptionPane.showMessageDialog(Main.this, "No data to edit");
+                } else {
+                    JOptionPane.showMessageDialog(Main.this, "Please select a single row");
+                }
+
+            }
+        });
+        ProductsTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                String name = model.getValueAt(ProductsTable.getSelectedRow(), 0).toString();
+                String carbs = model.getValueAt(ProductsTable.getSelectedRow(), 1).toString();
+                String fats = model.getValueAt(ProductsTable.getSelectedRow(), 2).toString();
+                String proteins = model.getValueAt(ProductsTable.getSelectedRow(), 3).toString();
+                String type = model.getValueAt(ProductsTable.getSelectedRow(), 4).toString();
+
+                NameField.setText(name);
+                CarbsField.setText(carbs);
+                FatsField.setText(fats);
+                ProteinsField.setText(proteins);
+                TypeField.setSelectedItem(type);
+            }
+        });
+        TypeOfMeals.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                makeTableForMeal();
+            }
+        });
     }
+
+    private void setMeals(){
+        meals.forEach(Meal -> TypeOfMeals.addItem(String.valueOf(Meal.getCategory())));
+    }
+
+    public void makeTableForMeal(){
+        ArrayList<ProductwWeight> items = meals.stream()
+                .filter(Meal -> Meal.getCategory().equals(Objects.requireNonNull(TypeOfMeals.getSelectedItem()).toString()))
+                .findFirst()
+                .map(Meal::getProducts)
+                .orElse(new ArrayList<>());
+
+        Object[][] data = items.stream()
+                .map(ProductwWeight -> new Object[]{ProductwWeight.getProducts().getName(), Round(ProductwWeight.getProducts().getCarbs()), Round(ProductwWeight.getProducts().getFats()), Round(ProductwWeight.getProducts().getProteins()), Round(ProductwWeight.getWeight())})
+                .toArray(Object[][]::new);
+
+        MealsTable.setModel(new DefaultTableModel(
+                data,
+                new String[]{"Name", "Carbs", "Fats", "Proteins", "Weight"}
+        ));
+        calculateNutrition();
+    }
+
+    private void calculateNutrition(){
+        double car, pro, fat, kcal = 0.0;
+        car = meals.stream()
+                .filter(Meal -> Meal.getCategory().equals(Objects.requireNonNull(TypeOfMeals.getSelectedItem()).toString()))
+                .findFirst()
+                .map(Meal -> Meal.getProducts().stream()
+                        .mapToDouble(ProductwWeight -> ProductwWeight.getProducts().getCarbs())
+                        .sum())
+                .orElse(0.0);
+        CarbsAmountField.setText(String.valueOf(Round(car)));
+
+        pro = meals.stream()
+                .filter(Meal -> Meal.getCategory().equals(Objects.requireNonNull(TypeOfMeals.getSelectedItem()).toString()))
+                .findFirst()
+                .map(Meal -> Meal.getProducts().stream()
+                        .mapToDouble(ProductwWeight -> ProductwWeight.getProducts().getProteins())
+                        .sum())
+                .orElse(0.0);
+        ProteinsAmountField.setText(String.valueOf(Round(pro)));
+
+        fat = meals.stream()
+                .filter(Meal -> Meal.getCategory().equals(Objects.requireNonNull(TypeOfMeals.getSelectedItem()).toString()))
+                .findFirst()
+                .map(Meal -> Meal.getProducts().stream()
+                        .mapToDouble(ProductwWeight -> ProductwWeight.getProducts().getFats())
+                        .sum())
+                .orElse(0.0);
+        FatsAmountField.setText(String.valueOf(Round(fat)));
+        kcal = ( car + pro ) * 4 + fat * 9;
+        KcalAmountField.setText(String.valueOf(Round(kcal)));
+
+    }
+
 
     public static double Round(double value) {
         return Math.round(value * 100.0) / 100.0;
     }
 
-    private void makeTable(ArrayList<Product> products)    {
+    private void makeTable() {
 
         Object[][] data = products.stream()
                 .map(Product -> new Object[]{Product.getName(), Round(Product.getCarbs()), Round(Product.getFats()), Round(Product.getProteins()), Product.getType().toString()})
@@ -103,7 +246,7 @@ public class Main extends JFrame{
 
         ProductsTable.setModel(new DefaultTableModel(
                 data,
-                new String[]{"Name", "Carbs", "Fats", "Proteins", "Category"}
+                new String[]{"Name", "Carbs", "Fats", "Proteins", "Type"}
         ));
     }
 }

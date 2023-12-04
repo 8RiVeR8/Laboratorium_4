@@ -4,25 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ffd9996-49f8-4321-9b13-3b31b0726e67" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Data/TxtFileWorker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GUI/AddToMeal.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GUI/AddToMeal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GUI/CreateMeal.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GUI/CreateMeal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GUI/Main.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GUI/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Logic/Meal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Logic/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Logic/ShopList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Logic/TypeFood.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Data2.txt" afterDir="false" />
+    <list default="true" id="3ffd9996-49f8-4321-9b13-3b31b0726e67" name="Changes" comment="GUI poczatek">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Logic/ProductwWeight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Data.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ProductWithWeight.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Data/TxtFileWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data/TxtFileWorker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/Main.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/Main.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Logic/Meal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Logic/Meal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Data2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Meals.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,24 +48,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;false&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;253&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "253",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/GUI" />
@@ -88,8 +80,16 @@
       <option name="presentableId" value="Default" />
       <updated>1701460349150</updated>
       <workItem from="1701460351375" duration="19316000" />
-      <workItem from="1701682746806" duration="392000" />
+      <workItem from="1701682746806" duration="7045000" />
     </task>
+    <task id="LOCAL-00001" summary="GUI poczatek">
+      <created>1701684010559</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1701684010559</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,5 +105,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="GUI poczatek" />
+    <option name="LAST_COMMIT_MESSAGE" value="GUI poczatek" />
   </component>
 </project>
