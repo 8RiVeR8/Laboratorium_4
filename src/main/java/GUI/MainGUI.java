@@ -6,10 +6,7 @@ import Logic.ProductwWeight;
 import Logic.TypeFood;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -210,6 +207,30 @@ public class MainGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 new CreateMeal(meals, TypeOfMeals);
+            }
+        });
+        AddToMeal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if(ProductsTable.getSelectedRowCount() == 1) {
+                    String type = Objects.requireNonNull(TypeField.getSelectedItem()).toString();
+                    String meal = Objects.requireNonNull(TypeOfMeals.getSelectedItem()).toString();
+                    Product product = new Product(NameField.getText(), Double.parseDouble(CarbsField.getText()), Double.parseDouble(FatsField.getText()), Double.parseDouble(ProteinsField.getText()), TypeFood.valueOf(type));
+
+                    SwingUtilities.invokeLater(() -> {
+                        AddToMeal addToMeal = new AddToMeal(meals, meal, product);
+                        addToMeal.addWindowListener(new WindowAdapter() {
+                            @Override
+                            public void windowClosed(WindowEvent e) {
+                                makeTableForMeal();
+                            }
+                        });
+                    });
+                } else if (ProductsTable.getSelectedRowCount() == 0) {
+                    JOptionPane.showMessageDialog(MainGUI.this, "Select a row");
+                }   else {
+                    JOptionPane.showMessageDialog(MainGUI.this, "Select a single row");
+                }
             }
         });
     }

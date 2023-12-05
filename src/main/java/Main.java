@@ -15,24 +15,6 @@ public class Main {
         ArrayList<Product> products = worker.getTxt();
         ArrayList<Meal> meals = worker.getTxtMeals();
 
-        /*products.stream()
-                .forEach(product -> System.out.println(product.getName() + ": "
-                        + "Carbs: " + product.getCarbs()
-                        + ", Fats: " + product.getFats()
-                        + ", Proteins: " + product.getProteins()
-                        + ", Category: " + product.getType()));*/
-
-        /*meals.stream()
-                .forEach(Meal -> {
-                    System.out.println("Meal Type: " + Meal.getCategory());
-                    System.out.println("Meal Items:");
-                    Meal.getProducts().forEach(ProductwWeight -> {
-                        System.out.println("  Product: " + ProductwWeight.getProducts().getName()
-                                + ", Weight: " + ProductwWeight.getWeight());
-                    });
-                    System.out.println("------------------------");
-                });*/
-
         MainGUI g = new MainGUI(products, meals);
 
     }
