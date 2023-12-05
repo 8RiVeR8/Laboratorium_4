@@ -233,6 +233,12 @@ public class MainGUI extends JFrame{
                 }
             }
         });
+        PDFexport.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                new PDFExport(meals);
+            }
+        });
     }
 
     private void setMeals(){
