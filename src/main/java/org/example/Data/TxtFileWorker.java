@@ -1,9 +1,9 @@
-package Data;
+package org.example.Data;
 
-import Logic.Meal;
-import Logic.Product;
-import Logic.ProductwWeight;
-import Logic.TypeFood;
+import org.example.Logic.Meal;
+import org.example.Logic.Product;
+import org.example.Logic.ProductwWeight;
+import org.example.Logic.TypeFood;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -12,11 +12,11 @@ import java.util.ArrayList;
 public class TxtFileWorker {
 
     private final String productsInTxt;
-    private final String meals;
+    private final String mealsTxt;
 
     public TxtFileWorker(String productsInTxt, String meals) {
         this.productsInTxt = productsInTxt;
-        this.meals = meals;
+        this.mealsTxt = meals;
     }
 
     public ArrayList<Product> getTxt()    {
@@ -58,12 +58,34 @@ public class TxtFileWorker {
             e.printStackTrace();
         }
     }
+    public void insertTxtMeals(ArrayList<Meal> meals){
+        try (FileWriter fileWriter = new FileWriter(this.mealsTxt, false)) {
+            for (Meal meal : meals) {
+                StringBuilder lineBuilder = new StringBuilder("*" + meal.getCategory() + "\n");
+
+                for (ProductwWeight product : meal.getProducts()) {
+                    lineBuilder.append(product.getProducts().getName()).append(";")
+                            .append(product.getProducts().getCarbs()).append(";")
+                            .append(product.getProducts().getFats()).append(";")
+                            .append(product.getProducts().getProteins()).append(";")
+                            .append(product.getProducts().getType().name().toUpperCase()).append(";")
+                            .append(product.getWeight()).append(";").append("\n");
+                }
+
+                String line = lineBuilder.toString();
+                fileWriter.write(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     public ArrayList<Meal> getTxtMeals(){
         ArrayList<ProductwWeight> items = new ArrayList<>();
         ArrayList<Meal> meals = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader(this.meals))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(this.mealsTxt))) {
             String line;
             while((line = br.readLine()) != null)    {
                 if(line.startsWith("*"))    {

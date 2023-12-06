@@ -1,8 +1,8 @@
-package GUI;
+package org.example.GUI;
 
-import Logic.Meal;
-import Logic.Product;
-import Logic.ProductwWeight;
+import org.example.Logic.Meal;
+import org.example.Logic.Product;
+import org.example.Logic.ProductwWeight;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -40,7 +40,7 @@ public class AddToMeal extends JFrame{
                     dispose();
                     JOptionPane.showMessageDialog(AddToMeal.this, "Added successfully");
                 } catch (NumberFormatException exception)   {
-                    JOptionPane.showMessageDialog(AddToMeal.this, "Invalid data");
+                    JOptionPane.showMessageDialog(AddToMeal.this, "Incorrect data!");
                 }
             }
         });

@@ -1,7 +1,7 @@
-package Data;
-import Logic.ProductwWeight;
-import Logic.ShopList;
-import Logic.TypeFood;
+package org.example.Data;
+import org.example.Logic.ProductwWeight;
+import org.example.Logic.ShopList;
+import org.example.Logic.TypeFood;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -12,7 +12,6 @@ import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Map;
 
 public class PDFGenerator {
     private static final int PAGE_MARGIN = 50;

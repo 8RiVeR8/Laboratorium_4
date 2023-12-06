@@ -1,4 +1,4 @@
-package Logic;
+package org.example.Logic;
 
 public class Product{
     private String name;

@@ -1,7 +1,9 @@
-import Data.TxtFileWorker;
-import GUI.MainGUI;
-import Logic.Meal;
-import Logic.Product;
+package org.example;
+
+import org.example.Data.TxtFileWorker;
+import org.example.GUI.MainGUI;
+import org.example.Logic.Meal;
+import org.example.Logic.Product;
 
 import java.util.ArrayList;
 
@@ -15,7 +17,6 @@ public class Main {
         ArrayList<Product> products = worker.getTxt();
         ArrayList<Meal> meals = worker.getTxtMeals();
 
-        MainGUI g = new MainGUI(products, meals);
-
+        MainGUI g = new MainGUI(products, meals, worker);
     }
 }

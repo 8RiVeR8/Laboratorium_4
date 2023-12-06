@@ -1,7 +1,7 @@
-package GUI;
+package org.example.GUI;
 
-import Logic.Meal;
-import Logic.ProductwWeight;
+import org.example.Logic.Meal;
+import org.example.Logic.ProductwWeight;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

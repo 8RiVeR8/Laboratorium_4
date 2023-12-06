@@ -1,10 +1,10 @@
-package GUI;
+package org.example.GUI;
 
-import Data.PDFGenerator;
-import Logic.Meal;
-import Logic.ProductwWeight;
-import Logic.ShopList;
-import Logic.TypeFood;
+import org.example.Data.PDFGenerator;
+import org.example.Logic.Meal;
+import org.example.Logic.ProductwWeight;
+import org.example.Logic.ShopList;
+import org.example.Logic.TypeFood;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

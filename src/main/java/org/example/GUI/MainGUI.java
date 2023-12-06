@@ -1,9 +1,10 @@
-package GUI;
+package org.example.GUI;
 
-import Logic.Meal;
-import Logic.Product;
-import Logic.ProductwWeight;
-import Logic.TypeFood;
+import org.example.Data.TxtFileWorker;
+import org.example.Logic.Meal;
+import org.example.Logic.Product;
+import org.example.Logic.ProductwWeight;
+import org.example.Logic.TypeFood;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
@@ -45,15 +46,18 @@ public class MainGUI extends JFrame{
     private ArrayList<Product> products;
     private ArrayList<Meal> meals;
 
-    public MainGUI(ArrayList<Product> products, ArrayList<Meal> meals) {
-        setContentPane(Background);
+    TxtFileWorker TXT;
+
+    public MainGUI(ArrayList<Product> products, ArrayList<Meal> meals, TxtFileWorker txt) {
+        setContentPane(Background); //
         setTitle("Food Table");
-        setSize(1000, 500);
+        setSize(1100, 550);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
 
         this.products = products;
         this.meals = meals;
+        this.TXT = txt;
 
         makeTable();
         DefaultTableModel model = (DefaultTableModel)ProductsTable.getModel();
@@ -67,10 +71,9 @@ public class MainGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 if (NameField.getText().isEmpty() || CarbsField.getText().isEmpty() || FatsField.getText().isEmpty() || ProteinsField.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(MainGUI.this, "Missing data");
+                    JOptionPane.showMessageDialog(MainGUI.this, "Not enough data!");
                 } else {
                     try {
-                        // Pobierz tekstową reprezentację wybranego elementu z TypeField
                         String typeText = Objects.requireNonNull(TypeField.getSelectedItem()).toString();
                         TypeFood category = TypeFood.valueOf(typeText);
                         Product product = new Product(NameField.getText(), Double.parseDouble(CarbsField.getText()), Double.parseDouble(FatsField.getText()), Double.parseDouble(ProteinsField.getText()), category);
@@ -88,9 +91,9 @@ public class MainGUI extends JFrame{
                         ProteinsField.setText("");
                         makeTable();
                     } catch (NumberFormatException exception) {
-                        JOptionPane.showMessageDialog(MainGUI.this, "Invalid data");
+                        JOptionPane.showMessageDialog(MainGUI.this, "Incorrect data!");
                     } catch (IllegalArgumentException exception) {
-                        JOptionPane.showMessageDialog(MainGUI.this, "Invalid product type");
+                        JOptionPane.showMessageDialog(MainGUI.this, "Incorrect product type!");
                     }
                 }
             }
@@ -105,7 +108,7 @@ public class MainGUI extends JFrame{
                     makeTable();
 
                 }   else if (ProductsTable.getSelectedRowCount() == 0) {
-                    JOptionPane.showMessageDialog(MainGUI.this, "No row selected");
+                    JOptionPane.showMessageDialog(MainGUI.this, "No row selected.\nPlease select a row!");
                 }   else {
                     JOptionPane.showMessageDialog(MainGUI.this, "Please select a single row");
                 }
@@ -115,31 +118,59 @@ public class MainGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 if(ProductsTable.getSelectedRowCount() == 1) {
-
-                    String Name = NameField.getText();
-                    String Carbs = CarbsField.getText();
-                    String Fats = FatsField.getText();
-                    String Proteins = ProteinsField.getText();
-                    String Category = Objects.requireNonNull(TypeField.getSelectedItem()).toString();
-
                     try {
-                        Product product = (Product) products.get(ProductsTable.getSelectedRow());
-                        product.setName(Name);
-                        product.setCarbs(Double.parseDouble(Carbs));
-                        product.setFats(Double.parseDouble(Fats));
-                        product.setProteins(Double.parseDouble(Proteins));
-                        product.setType(TypeFood.valueOf(Category));
+                        DefaultTableModel model1 = (DefaultTableModel)ProductsTable.getModel();
 
-                        model.setValueAt(Name, ProductsTable.getSelectedRow(), 0);
-                        model.setValueAt(Carbs, ProductsTable.getSelectedRow(), 1);
-                        model.setValueAt(Fats, ProductsTable.getSelectedRow(), 2);
-                        model.setValueAt(Proteins, ProductsTable.getSelectedRow(), 3);
-                        model.setValueAt(Category, ProductsTable.getSelectedRow(), 4);
+                        int selectedRowIndex = ProductsTable.getSelectedRow();
 
-                        JOptionPane.showMessageDialog(MainGUI.this, "Update successful");
+                        String name = model1.getValueAt(selectedRowIndex, 0).toString();
+                        String carbs = model1.getValueAt(selectedRowIndex, 1).toString();
+                        String fats = model1.getValueAt(selectedRowIndex, 2).toString();
+                        String proteins = model1.getValueAt(selectedRowIndex, 3).toString();
+
+                        String newName = JOptionPane.showInputDialog(null, "Enter new name: ", name);
+                        String newCarb = JOptionPane.showInputDialog(null, "Enter new amount of carbs: ", carbs);
+                        String newFats = JOptionPane.showInputDialog(null, "Enter new amount of fats: ", fats);
+                        String newProteins = JOptionPane.showInputDialog(null, "Enter new amount of proteins: ", proteins);
+                        JComboBox<String> comboBox = new JComboBox<>();
+
+                        comboBox.addItem("FRUIT");
+                        comboBox.addItem("MEAT");
+                        comboBox.addItem("DAIRY");
+                        comboBox.addItem("VEGETABLE");
+                        comboBox.addItem("BREAD");
+                        comboBox.addItem("OTHER");
+                        comboBox.addItem("GRAIN");
+
+                        String result = String.valueOf(JOptionPane.showOptionDialog(
+                                null,
+                                comboBox,
+                                "Select an option",
+                                JOptionPane.OK_CANCEL_OPTION,
+                                JOptionPane.PLAIN_MESSAGE,
+                                null,
+                                null,
+                                null));
+
+                        Product product = products.get(ProductsTable.getSelectedRow());
+                        product.setName(newName);
+                        product.setCarbs(Double.parseDouble(newCarb));
+                        product.setFats(Double.parseDouble(newFats));
+                        product.setProteins(Double.parseDouble(newProteins));
+                        product.setType(org.example.Logic.TypeFood.valueOf(comboBox.getSelectedItem().toString()));
+
+                        model.setValueAt(newName, selectedRowIndex, 0);
+                        model.setValueAt(Double.parseDouble(newCarb), selectedRowIndex, 1);
+                        model.setValueAt(Double.parseDouble(newFats), selectedRowIndex, 2);
+                        model.setValueAt(Double.parseDouble(newProteins), selectedRowIndex, 3);
+                        model.setValueAt(comboBox.getSelectedItem().toString(), selectedRowIndex, 4);
+
+
+
+                        JOptionPane.showMessageDialog(MainGUI.this, "Updated successfully");
 
                     } catch (NumberFormatException exception)   {
-                        JOptionPane.showMessageDialog(MainGUI.this, "Invalid data");
+                        JOptionPane.showMessageDialog(MainGUI.this, "Incorrect data!");
                     }
 
                 } else if (ProductsTable.getRowCount() == 0) {
@@ -199,7 +230,7 @@ public class MainGUI extends JFrame{
                         makeTableForMeal();
                     }
                 } else {
-                    JOptionPane.showMessageDialog(MainGUI.this, "No row selected");
+                    JOptionPane.showMessageDialog(MainGUI.this, "No row selected.\nPlease select a row!");
                 }
             }
         });
@@ -227,9 +258,9 @@ public class MainGUI extends JFrame{
                         });
                     });
                 } else if (ProductsTable.getSelectedRowCount() == 0) {
-                    JOptionPane.showMessageDialog(MainGUI.this, "Select a row");
+                    JOptionPane.showMessageDialog(MainGUI.this, "No row selected.\nPlease select a row!");
                 }   else {
-                    JOptionPane.showMessageDialog(MainGUI.this, "Select a single row");
+                    JOptionPane.showMessageDialog(MainGUI.this, "Please select a single row");
                 }
             }
         });
@@ -237,6 +268,15 @@ public class MainGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 new PDFExport(meals);
+            }
+        });
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                TXT.insertTxt(products);
+                TXT.insertTxtMeals(meals);
+                System.exit(0);
             }
         });
     }
