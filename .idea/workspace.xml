@@ -4,29 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ffd9996-49f8-4321-9b13-3b31b0726e67" name="Changes" comment="Prawie gotowe">
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Data/PDFGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Data/PDFGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Data/TxtFileWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Data/TxtFileWorker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/AddToMeal.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GUI/AddToMeal.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/AddToMeal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GUI/AddToMeal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/CreateMeal.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GUI/CreateMeal.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/CreateMeal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GUI/CreateMeal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/MainGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GUI/MainGUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/MainGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GUI/MainGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/PDFExport.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GUI/PDFExport.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/PDFExport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GUI/PDFExport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Logic/Meal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Logic/Meal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Logic/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Logic/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Logic/ProductwWeight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Logic/ProductwWeight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Logic/ShopList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Logic/ShopList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Logic/TypeFood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Logic/TypeFood.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Data.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Meals.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Meals.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ProductWithWeight.txt" beforeDir="false" />
+    <list default="true" id="3ffd9996-49f8-4321-9b13-3b31b0726e67" name="Changes" comment="Projekt skonczony">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Data/PDFGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Data/PDFGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GUI/MainGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GUI/MainGUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +74,7 @@
       <option name="presentableId" value="Default" />
       <updated>1701460349150</updated>
       <workItem from="1701460351375" duration="19316000" />
-      <workItem from="1701682746806" duration="28362000" />
+      <workItem from="1701682746806" duration="29168000" />
     </task>
     <task id="LOCAL-00001" summary="GUI poczatek">
       <created>1701684010559</created>
@@ -131,7 +111,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701777856625</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Projekt skonczony">
+      <created>1701891969862</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1701891969862</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,6 +141,7 @@
     <MESSAGE value="Dodanie dwoch guzikow" />
     <MESSAGE value="Add to meal" />
     <MESSAGE value="Prawie gotowe" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prawie gotowe" />
+    <MESSAGE value="Projekt skonczony" />
+    <option name="LAST_COMMIT_MESSAGE" value="Projekt skonczony" />
   </component>
 </project>

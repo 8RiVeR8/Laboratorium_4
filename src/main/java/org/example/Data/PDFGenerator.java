@@ -8,8 +8,6 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
-
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -49,7 +47,7 @@ public class PDFGenerator {
                         yOffset = (int) PDRectangle.A4.getHeight() - PAGE_MARGIN;
                     }
 
-                    yOffset -= LINE_HEIGHT;   //space before category name
+                    yOffset -= LINE_HEIGHT;
 
                     contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD), 10);
                     contentStream.beginText();
@@ -57,7 +55,7 @@ public class PDFGenerator {
                     contentStream.showText("  " + category.toString());
                     contentStream.endText();
 
-                    yOffset -= LINE_HEIGHT; //space after category name
+                    yOffset -= LINE_HEIGHT;
 
                     contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD), 10);
                     for (ProductwWeight item : items) {
@@ -69,7 +67,7 @@ public class PDFGenerator {
                         contentStream.endText();
                     }
 
-                    yOffset -= LINE_HEIGHT; //space between categories
+                    yOffset -= LINE_HEIGHT;
                 }
 
                 contentStream.close();
@@ -79,12 +77,6 @@ public class PDFGenerator {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-    }
-
-    private static String getDesktopPath() {
-        String userHome = System.getProperty("user.home");
-        String desktopPath = userHome + File.separator + "Desktop";
-        return desktopPath + File.separator + "Shopping_List.pdf";
     }
 }
 
