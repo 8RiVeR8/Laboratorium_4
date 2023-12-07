@@ -16,7 +16,7 @@ public class AddToMeal extends JFrame{
     private JLabel EnterWeight;
 
     public AddToMeal(ArrayList<Meal> meals, String mealName, Product product){
-        setContentPane(panel1);
+        setContentPane(panel1); //panel1
         setTitle("Add to meal");
         setSize(300, 200);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);

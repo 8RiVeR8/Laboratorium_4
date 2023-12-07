@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ffd9996-49f8-4321-9b13-3b31b0726e67" name="Changes" comment="Projekt skonczony">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Data/PDFGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Data/PDFGenerator.java" afterDir="false" />
+    <list default="true" id="3ffd9996-49f8-4321-9b13-3b31b0726e67" name="Changes" comment="Drobna poprawka">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GUI/AddToMeal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GUI/AddToMeal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GUI/CreateMeal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GUI/CreateMeal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GUI/MainGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GUI/MainGUI.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GUI/MainGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GUI/MainGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GUI/PDFExport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GUI/PDFExport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Logic/ShopList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Logic/ShopList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Meals.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Meals.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +81,7 @@
       <option name="presentableId" value="Default" />
       <updated>1701460349150</updated>
       <workItem from="1701460351375" duration="19316000" />
-      <workItem from="1701682746806" duration="29168000" />
+      <workItem from="1701682746806" duration="38848000" />
     </task>
     <task id="LOCAL-00001" summary="GUI poczatek">
       <created>1701684010559</created>
@@ -118,7 +125,21 @@
       <option name="project" value="LOCAL" />
       <updated>1701891969862</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Drobna poprawka">
+      <created>1701897023640</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1701897023640</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Drobna poprawka">
+      <created>1701897191492</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1701897191492</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,6 +163,7 @@
     <MESSAGE value="Add to meal" />
     <MESSAGE value="Prawie gotowe" />
     <MESSAGE value="Projekt skonczony" />
-    <option name="LAST_COMMIT_MESSAGE" value="Projekt skonczony" />
+    <MESSAGE value="Drobna poprawka" />
+    <option name="LAST_COMMIT_MESSAGE" value="Drobna poprawka" />
   </component>
 </project>

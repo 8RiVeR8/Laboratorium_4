@@ -25,4 +25,9 @@ public class ShopList {
     public void setTypeFood(TypeFood typeFood) {
         this.typeFood = typeFood;
     }
+
+    public void replaceProduct(ProductwWeight existingProduct, ProductwWeight newProduct) {
+        weight.remove(existingProduct);
+        weight.add(newProduct);
+    }
 }

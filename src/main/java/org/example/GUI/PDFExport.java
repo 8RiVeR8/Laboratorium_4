@@ -26,7 +26,7 @@ public class PDFExport extends JFrame {
     ArrayList<ProductwWeight> item = new ArrayList<>();
 
     public PDFExport(ArrayList<Meal> meal) {
-        setContentPane(panel1);
+        setContentPane(panel1); //panel1
         setTitle("Create shopping list");
         setSize(300, 400);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -75,8 +75,11 @@ public class PDFExport extends JFrame {
                     ShopList shopList = shopListMap.get(typeFood);
 
                     if (productMap.containsKey(productName)) {
-                        productMap.get(productName).setWeight(productMap.get(productName).getWeight() + productwWeight.getWeight());
-                    } else {
+                        ProductwWeight existingProduct = productMap.get(productName);
+                        ProductwWeight newProduct = new ProductwWeight(existingProduct.getProducts(), existingProduct.getWeight() + productwWeight.getWeight());
+                        shopList.replaceProduct(existingProduct, newProduct);
+                        productMap.put(productName, newProduct);
+                        } else {
                         shopList.getWeight().add(productwWeight);
                         productMap.put(productName, productwWeight);
                     }

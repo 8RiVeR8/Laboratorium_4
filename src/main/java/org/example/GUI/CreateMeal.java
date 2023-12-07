@@ -16,7 +16,7 @@ public class CreateMeal extends JFrame{
 
     public CreateMeal(ArrayList<Meal> meals, JComboBox MealsBox){
 
-        setContentPane(Background);
+        setContentPane(Background); //Background
         setTitle("Create Meal");
         setSize(300, 200);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);

@@ -49,7 +49,7 @@ public class MainGUI extends JFrame{
     TxtFileWorker TXT;
 
     public MainGUI(ArrayList<Product> products, ArrayList<Meal> meals, TxtFileWorker txt) {
-        setContentPane(Background); //
+        setContentPane(Background); //Background
         setTitle("Food Table");
         setSize(1100, 550);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -168,7 +168,7 @@ public class MainGUI extends JFrame{
 
 
                         JOptionPane.showMessageDialog(MainGUI.this, "Updated successfully");
-
+                        makeTable();
                     } catch (NumberFormatException exception)   {
                         JOptionPane.showMessageDialog(MainGUI.this, "Incorrect data!");
                     }
